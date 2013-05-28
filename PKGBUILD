@@ -18,20 +18,23 @@ install=dwm.install
 provides=('dwm')
 conflicts=('dwm')
 epoch=1
-source=( dwm.desktop
-    "$_pkgname::git+http://git.suckless.org/dwm#tag=6.0"
-    "git://github.com/albanb/dwm-patch.git")
+_source=( dwm.desktop
+    "$_pkgname::git+http://git.suckless.org/dwm#tag=6.0")
+_patchname=dwm-patch
+_patches=("git://github.com/albanb/dwm-patch.git")
+
+source=(${_source[@]} ${_patches[@]})
 
 prepare() {
   cd "$srcdir/$_pkgname"
 
   # applying patches
-  if ls $SRCDEST/*\.diff 2> /dev/null;then for i in $SRCDEST/*\.diff;do msg "applying $i"; git apply $i;done;fi
+  if ls $srcdir/$_patchname/*\.diff 2> /dev/null;then for i in $srcdir/$_patchname/*\.diff;do msg "applying $i"; git apply $i;done;fi
 
   # custom config
-  if [[ -f $SRCDEST/config.h ]]; then
+  if [[ -f $srcdir/$_patchname/config.h ]]; then
     #ln -sf $SRCDEST/config.h $srcdir/config.h
-    cp $SRCDEST/config.h $srcdir/$_pkgname/config.h
+    cp $srcdir/$_patchname/config.h $srcdir/$_pkgname/config.h
   fi
 }
 
@@ -49,4 +52,5 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 md5sums=('939f403a71b6e85261d09fc3412269ee'
+         'SKIP'
          'SKIP')
