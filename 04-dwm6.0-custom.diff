@@ -1,0 +1,191 @@
+--- config.def.h
++++ config.def.h
+@@ -1,16 +1,23 @@
+ /* See LICENSE file for copyright and license details. */
++#include <X11/XF86keysym.h>
+ 
+ /* appearance */
+-#define NUMCOLORS         4             // need at least 3
+-static const char colors[NUMCOLORS][ColLast][8] = {
+-   // border   foreground  background
+-   { "#cccccc", "#000000", "#cccccc" },  // 0 = normal
+-   { "#0066ff", "#ffffff", "#0066ff" },  // 1 = selected
+-   { "#0066ff", "#0066ff", "#ffffff" },  // 2 = urgent/warning
+-   { "#ff0000", "#ffffff", "#ff0000" },  // 3 = error
+-   // add more here
++static const char font[]            = "-*-stlarch-medium-r-*-*-10-*-*-*-*-*-*-*" "," "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*";
++#define NUMCOLORS 5
++//283a3f
++static const char colors[NUMCOLORS][ColLast][9] = {
++	{ "#0F2328", "#F2F1F0", "#404040" },
++	{ "#0076F3", "#3A81CD", "#404040" },
++	{ "#33FF00", "#16596A", "#404040" },
++	{ "#FF8844", "#FF8844", "#404040" },
++	{ "#FF0000", "#DC322F", "#404040" },
+ };
+-static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
++static const char normbordercolor[] = "#444444";
++static const char normbgcolor[]     = "#222222";
++static const char normfgcolor[]     = "#bbbbbb";
++static const char selbordercolor[]  = "#005577";
++static const char selbgcolor[]      = "#005577";
++static const char selfgcolor[]      = "#eeeeee";
+ static const unsigned int borderpx  = 1;        /* border pixel of windows */
+ static const unsigned int snap      = 32;       /* snap pixel */
+ static const Bool showbar           = True;     /* False means no bar */
+@@ -22,7 +29,7 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+ static const Rule rules[] = {
+ 	/* class      instance    title       tags mask     isfloating   monitor */
+ 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
+-	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
++	{ "Firefox",  NULL,       NULL,       0,            False,       -1 },
+ };
+ 
+ /* layout(s) */
+@@ -38,7 +45,7 @@ static const Layout layouts[] = {
+ };
+ 
+ /* key definitions */
+-#define MODKEY Mod1Mask
++#define MODKEY Mod4Mask
+ #define TAGKEYS(KEY,TAG) \
+ 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+ 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+@@ -50,43 +57,83 @@ static const Layout layouts[] = {
+ 
+ /* commands */
+ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
+-static const char *termcmd[]  = { "uxterm", NULL };
++static const char *termuxcmd[]  = { "st", "-e", "/home/alban/bin/wm/tmux-session.sh", NULL };
++static const char *termcmd[]  = { "st", "-e", NULL };
++static const char *launcher[]  = { "gmrun", NULL };
++static const char *audio[]  = { "st", "-e", "mocp", "-M", "/home/alban/.config/moc", NULL };
++static const char *web[]  = { "dwb", NULL };
++static const char *webtab[]  = { "surf", NULL };
++static const char *webalt[]  = { "firefox", NULL };
++static const char *filemanager[]  = { "st", "-e", "ranger", NULL };
++static const char *printscreen[]  = { "scrot", "/home/alban/print-screen.jpeg", NULL };
++static const char *printwindow[]  = { "scrot", "-s", "/home/alban/print-screen.jpeg", NULL };
++static const char *lockscreen[]  = { "slock", NULL };
++static const char *video[]  = { "vlc", "--quiet", NULL };
++static const char *soundup[]  = { "/home/alban/bin/wm/sound.sh", "up", NULL };
++static const char *sounddown[]  = { "/home/alban/bin/wm/sound.sh", "down", NULL };
++static const char *soundmute[]  = { "/home/alban/bin/wm/sound.sh", "mute", NULL };
++static const char *toggletouchpad[]  = { "/home/alban/bin/wm/ToggleTouchpad.sh", NULL };
++static const char *musicplay[]  = { "/home/alban/bin/wm/music.sh", "play", NULL };
++static const char *musicnext[]  = { "/home/alban/bin/wm/music.sh", "next", NULL };
++static const char *musicprevious[]  = { "/home/alban/bin/wm/music.sh", "previous", NULL };
++static const char *dmenubar[]  = { "/home/alban/bin/wm/menubar/dmenu-5-bar.sh", NULL };
+ 
+ static Key keys[] = {
+ 	/* modifier                     key        function        argument */
+-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+-	{ MODKEY,                       XK_Return, zoom,           {0} },
+-	{ MODKEY,                       XK_Tab,    view,           {0} },
+-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+-	TAGKEYS(                        XK_1,                      0)
+-	TAGKEYS(                        XK_2,                      1)
+-	TAGKEYS(                        XK_3,                      2)
+-	TAGKEYS(                        XK_4,                      3)
+-	TAGKEYS(                        XK_5,                      4)
+-	TAGKEYS(                        XK_6,                      5)
+-	TAGKEYS(                        XK_7,                      6)
+-	TAGKEYS(                        XK_8,                      7)
+-	TAGKEYS(                        XK_9,                      8)
+-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
++	{ MODKEY,                       XK_p,                     spawn,          {.v = dmenucmd } },
++	{ MODKEY,                       XK_c,                     spawn,          {.v = termuxcmd } },
++	{ MODKEY|ShiftMask,             XK_c,                     spawn,          {.v = termcmd } },
++	{ MODKEY,                       XK_x,                     spawn,          {.v = launcher } },
++	{ MODKEY,                       XK_a,                     spawn,          {.v = audio } },
++	{ MODKEY,                       XK_u,                     spawn,          {.v = web } },
++	{ MODKEY|ShiftMask,             XK_u,                     spawn,          {.v = webtab } },
++	{ MODKEY,                       XK_w,                     spawn,          {.v = webalt } },
++	{ MODKEY,                       XK_n,                     spawn,          {.v = filemanager } },
++	{ 0,                            XK_Print,                 spawn,          {.v = printscreen } },
++	{ MODKEY, 	                XK_Print,                 spawn,          {.v = printwindow } },
++	{ MODKEY,                       XK_s,                     spawn,          {.v = lockscreen } },
++	{ MODKEY,                       XK_v,                     spawn,          {.v = video } },
++	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = soundup} },
++	{ 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = sounddown} },
++	{ 0,                            XF86XK_AudioMute,         spawn,          {.v = soundmute} },
++	{ 0,                            XF86XK_TouchpadToggle,    spawn,          {.v = toggletouchpad } },
++	{ 0,                            XF86XK_AudioPlay,         spawn,          {.v = musicplay } },
++	{ 0,                            XF86XK_AudioNext,         spawn,          {.v = musicnext } },
++	{ 0,                            XF86XK_AudioPrev,         spawn,          {.v = musicprevious } },
++	{ MODKEY,                       XK_o,                     spawn,          {.v = dmenubar } },
++	{ MODKEY,                       XK_b,                     togglebar,      {0} },
++	{ MODKEY,                       XK_j,                     focusstack,     {.i = +1 } },
++	{ MODKEY,                       XK_k,                     focusstack,     {.i = -1 } },
++	{ MODKEY,                       XK_i,                     incnmaster,     {.i = +1 } },
++	{ MODKEY,                       XK_d,                     incnmaster,     {.i = -1 } },
++	{ MODKEY,                       XK_h,                     setmfact,       {.f = -0.05} },
++	{ MODKEY,                       XK_l,                     setmfact,       {.f = +0.05} },
++	{ MODKEY,                       XK_Return,                zoom,           {0} },
++	{ MODKEY,                       XK_Tab,                   view,           {0} },
++	{ MODKEY,                       XK_q,                     killclient,     {0} },
++	{ MODKEY,                       XK_t,                     setlayout,      {.v = &layouts[0]} },
++	{ MODKEY,                       XK_f,                     setlayout,      {.v = &layouts[1]} },
++	{ MODKEY,                       XK_m,                     setlayout,      {.v = &layouts[2]} },
++	{ MODKEY,                       XK_space,                 setlayout,      {0} },
++	{ MODKEY|ShiftMask,             XK_space,                 togglefloating, {0} },
++	{ MODKEY,                       XK_agrave,                view,           {.ui = ~0 } },
++	{ MODKEY|ShiftMask,             XK_agrave,                tag,            {.ui = ~0 } },
++	{ MODKEY,                       XK_comma,                 focusmon,       {.i = -1 } },
++	{ MODKEY,                       XK_semicolon,             focusmon,       {.i = +1 } },
++	{ MODKEY|ShiftMask,             XK_comma,                 tagmon,         {.i = -1 } },
++	{ MODKEY|ShiftMask,             XK_semicolon,             tagmon,         {.i = +1 } },
++	{ MODKEY,                       XK_Right,                 shiftview,      {.i = +1 } },
++	{ MODKEY,                       XK_Left,                  shiftview,      {.i = -1 } },
++	TAGKEYS(                        XK_ampersand,             0)
++	TAGKEYS(                        XK_eacute,                1)
++	TAGKEYS(                        XK_quotedbl,              2)
++	TAGKEYS(                        XK_apostrophe,            3)
++	TAGKEYS(                        XK_parenleft,             4)
++	TAGKEYS(                        XK_minus,                 5)
++	TAGKEYS(                        XK_egrave,                6)
++	TAGKEYS(                        XK_underscore,            7)
++	TAGKEYS(                        XK_ccedilla,              8)
++	{ MODKEY|ShiftMask,             XK_q,                     quit,           {0} },
+ };
+ 
+ /* button definitions */
+@@ -96,7 +143,7 @@ static Button buttons[] = {
+ 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+ 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+ 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
++	{ ClkStatusText,        0,              Button2,        spawn,          {.v = dmenubar } },
+ 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+ 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+ 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+--- dwm.c
++++ dwm.c
+@@ -50,7 +50,7 @@
+ #define LENGTH(X)               (sizeof X / sizeof X[0])
+ #define MAX(A, B)               ((A) > (B) ? (A) : (B))
+ #define MIN(A, B)               ((A) < (B) ? (A) : (B))
+-#define MAXCOLORS               8
++#define MAXCOLORS               21
+ #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
+ #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
+ #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)

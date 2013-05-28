@@ -1,0 +1,32 @@
+--- dwm.c
++++ dwm.c
+@@ -227,6 +227,7 @@ static void sigchld(int unused);
+ static void spawn(const Arg *arg);
+ static void tag(const Arg *arg);
+ static void tagmon(const Arg *arg);
++static void shiftview(const Arg *arg);
+ static int textnw(const char *text, unsigned int len);
+ static void tile(Monitor *);
+ static void togglebar(const Arg *arg);
+@@ -1718,6 +1719,21 @@ tagmon(const Arg *arg) {
+ 	sendmon(selmon->sel, dirtomon(arg->i));
+ }
+ 
++void
++shiftview(const Arg *arg) {
++	Arg shifted;
++
++	if(arg->i > 0) // left circular shift
++		shifted.ui = (selmon->tagset[selmon->seltags] << arg->i)
++		   | (selmon->tagset[selmon->seltags] >> (LENGTH(tags) - arg->i));
++
++	else // right circular shift
++		shifted.ui = selmon->tagset[selmon->seltags] >> (- arg->i)
++		   | selmon->tagset[selmon->seltags] << (LENGTH(tags) + arg->i);
++
++	view(&shifted);
++}
++
+ int
+ textnw(const char *text, unsigned int len) {
+ 	XRectangle r;
