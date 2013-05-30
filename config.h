@@ -52,7 +52,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
 static const char *termuxcmd[]  = { "st", "-e", "/home/alban/bin/wm/tmux-session.sh", NULL };
-static const char *termcmd[]  = { "st", "-e", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *launcher[]  = { "interrobang", NULL };
 static const char *audio[]  = { "st", "-e", "mocp", "-M", "/home/alban/.config/moc", NULL };
 static const char *web[]  = { "dwb", NULL };
