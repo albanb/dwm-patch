@@ -51,7 +51,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
-static const char *termuxcmd[]  = { "st", "-e", "/home/alban/bin/wm/tmux-session.sh", NULL };
+static const char *termuxcmd[]  = { "st", "-e", "/home/alban/bin/tmux-session.sh", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *launcher[]  = { "interrobang", NULL };
 static const char *audio[]  = { "st", "-e", "mocp", "-M", "/home/alban/.config/moc", NULL };
@@ -62,14 +62,14 @@ static const char *printscreen[]  = { "scrot", "/home/alban/print-screen.jpeg", 
 static const char *printwindow[]  = { "scrot", "-s", "/home/alban/print-screen.jpeg", NULL };
 static const char *lockscreen[]  = { "slock", NULL };
 static const char *video[]  = { "vlc", "--quiet", NULL };
-static const char *soundup[]  = { "/home/alban/bin/wm/sound.sh", "up", NULL };
-static const char *sounddown[]  = { "/home/alban/bin/wm/sound.sh", "down", NULL };
-static const char *soundmute[]  = { "/home/alban/bin/wm/sound.sh", "mute", NULL };
-static const char *toggletouchpad[]  = { "/home/alban/bin/wm/ToggleTouchpad.sh", NULL };
-static const char *musicplay[]  = { "/home/alban/bin/wm/music.sh", "play", NULL };
-static const char *musicnext[]  = { "/home/alban/bin/wm/music.sh", "next", NULL };
-static const char *musicprevious[]  = { "/home/alban/bin/wm/music.sh", "previous", NULL };
-static const char *dmenubar[]  = { "/home/alban/bin/wm/menubar/dmenu-5-bar.sh", NULL };
+static const char *soundup[]  = { "/home/alban/bin/sound.sh", "up", NULL };
+static const char *sounddown[]  = { "/home/alban/bin/sound.sh", "down", NULL };
+static const char *soundmute[]  = { "/home/alban/bin/sound.sh", "mute", NULL };
+static const char *toggletouchpad[]  = { "/home/alban/bin/toggletouchpad.sh", NULL };
+static const char *musicplay[]  = { "/home/alban/bin/music.sh", "play", NULL };
+static const char *musicnext[]  = { "/home/alban/bin/music.sh", "next", NULL };
+static const char *musicprevious[]  = { "/home/alban/bin/music.sh", "previous", NULL };
+static const char *dmenubar[]  = { "/home/alban/bin/menubar/dmenu-5-bar.sh", NULL };
 static const char *scratchpadcmd[] = { "st", "-t", "Scratchpad", "-g", "540x150+540+24", NULL };
 
 static Key keys[] = {
