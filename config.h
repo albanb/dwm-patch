@@ -69,7 +69,7 @@ static const char *toggletouchpad[]  = { "/home/alban/bin/toggletouchpad.sh", NU
 static const char *musicplay[]  = { "/home/alban/bin/music.sh", "play", NULL };
 static const char *musicnext[]  = { "/home/alban/bin/music.sh", "next", NULL };
 static const char *musicprevious[]  = { "/home/alban/bin/music.sh", "previous", NULL };
-static const char *dmenubar[]  = { "/home/alban/bin/menubar/dmenu-5-bar.sh", NULL };
+static const char *dmenubar[]  = { "/home/alban/bin/menu-dwm.bash", NULL };
 static const char *scratchpadcmd[] = { "st", "-t", "Scratchpad", "-g", "540x150+540+24", NULL };
 
 static Key keys[] = {
