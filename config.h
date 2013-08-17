@@ -71,6 +71,8 @@ static const char *musicnext[]  = { "/home/alban/bin/music.sh", "next", NULL };
 static const char *musicprevious[]  = { "/home/alban/bin/music.sh", "previous", NULL };
 static const char *dmenubar[]  = { "/home/alban/bin/menu-dwm.bash", NULL };
 static const char *scratchpadcmd[] = { "st", "-t", "Scratchpad", "-g", "540x150+540+24", NULL };
+static const char *passmancmd[] = { "passman.bash", "fillbrowser", NULL };
+static const char *clipsynccmd[] = { "lolictrl", "-spc", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -84,7 +86,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_n,                     spawn,          {.v = filemanager } },
 	{ 0,                            XK_Print,                 spawn,          {.v = printscreen } },
 	{ MODKEY, 	                XK_Print,                 spawn,          {.v = printwindow } },
-	{ MODKEY,                       XK_s,                     spawn,          {.v = lockscreen } },
+	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = lockscreen } },
 	{ MODKEY,                       XK_v,                     spawn,          {.v = video } },
 	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = soundup} },
 	{ 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = sounddown} },
@@ -94,7 +96,9 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioNext,         spawn,          {.v = musicnext } },
 	{ 0,                            XF86XK_AudioPrev,         spawn,          {.v = musicprevious } },
 	{ MODKEY,                       XK_o,                     spawn,          {.v = dmenubar } },
-	{ MODKEY,                       XK_p,                     spawn,          {.v = scratchpadcmd } },
+	{ MODKEY|ControlMask,           XK_c,                     spawn,          {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_p,                     spawn,          {.v = passmancmd } },
+	{ MODKEY,                       XK_s,                     spawn,          {.v = clipsynccmd } },
 	{ MODKEY,                       XK_b,                     togglebar,      {0} },
 	{ MODKEY,                       XK_j,                     focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,                     focusstack,     {.i = -1 } },
