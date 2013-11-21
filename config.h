@@ -54,7 +54,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", colors[0][Col
 static const char *termuxcmd[]  = { "st", "-e", "/home/alban/bin/tmux-session.sh", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *launcher[]  = { "interrobang", NULL };
-static const char *audio[]  = { "st", "-e", "mocp", "-M", "/home/alban/.config/moc", NULL };
+static const char *audio[]  = { "st", "-e", "ncmpcpp", NULL };
 static const char *web[]  = { "dwb", NULL };
 static const char *webalt[]  = { "firefox", NULL };
 static const char *filemanager[]  = { "st", "-e", "ranger", NULL };
@@ -73,6 +73,7 @@ static const char *dmenubar[]  = { "/home/alban/bin/menu-dwm.bash", NULL };
 static const char *scratchpadcmd[] = { "st", "-t", "Scratchpad", "-g", "540x150+540+24", NULL };
 static const char *passmancmd[] = { "passman.bash", "fillbrowser", NULL };
 static const char *clipsynccmd[] = { "xcmenu", "-spc", NULL };
+static const char *clipboardcmd[] = { "xcmenuctrl", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -99,6 +100,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_c,                     spawn,          {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_p,                     spawn,          {.v = passmancmd } },
 	{ MODKEY,                       XK_s,                     spawn,          {.v = clipsynccmd } },
+	{ MODKEY|ControlMask,           XK_s,                     spawn,          {.v = clipboardcmd } },
 	{ MODKEY,                       XK_b,                     togglebar,      {0} },
 	{ MODKEY,                       XK_j,                     focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,                     focusstack,     {.i = -1 } },
