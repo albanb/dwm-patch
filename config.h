@@ -18,7 +18,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -77,30 +77,30 @@ static const char *clipboardcmd[] = { "xcmenuctrl", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_x,                     spawn,          {.v = launcher } },
 	{ MODKEY|ShiftMask,             XK_x,                     spawn,          {.v = dmenucmd } },
+	{ MODKEY|ControlMask,           XK_x,                     spawn,          {.v = dmenubar } },
 	{ MODKEY,                       XK_c,                     spawn,          {.v = termuxcmd } },
 	{ MODKEY|ShiftMask,             XK_c,                     spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_x,                     spawn,          {.v = launcher } },
+	{ MODKEY|ControlMask,           XK_c,                     spawn,          {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_a,                     spawn,          {.v = audio } },
+	{ MODKEY,                       XK_v,                     spawn,          {.v = video } },
 	{ MODKEY,                       XK_w,                     spawn,          {.v = web } },
 	{ MODKEY|ShiftMask,             XK_w,                     spawn,          {.v = webalt } },
-	{ MODKEY,                       XK_n,                     spawn,          {.v = filemanager } },
-	{ 0,                            XK_Print,                 spawn,          {.v = printscreen } },
-	{ MODKEY, 	                XK_Print,                 spawn,          {.v = printwindow } },
+	{ MODKEY,                       XK_r,                     spawn,          {.v = filemanager } },
+	{ MODKEY,                       XK_p,                     spawn,          {.v = passmancmd } },
+	{ MODKEY,                       XK_s,                     spawn,          {.v = clipsynccmd } },
 	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = lockscreen } },
-	{ MODKEY,                       XK_v,                     spawn,          {.v = video } },
+	{ MODKEY|ControlMask,           XK_s,                     spawn,          {.v = clipboardcmd } },
+	{ MODKEY, 	                	XK_Print,                 spawn,          {.v = printwindow } },
+	{ 0,                            XK_Print,                 spawn,          {.v = printscreen } },
 	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,          {.v = soundup} },
 	{ 0,                            XF86XK_AudioLowerVolume,  spawn,          {.v = sounddown} },
 	{ 0,                            XF86XK_AudioMute,         spawn,          {.v = soundmute} },
-	{ 0,                            XF86XK_TouchpadToggle,    spawn,          {.v = toggletouchpad } },
 	{ 0,                            XF86XK_AudioPlay,         spawn,          {.v = musicplay } },
 	{ 0,                            XF86XK_AudioNext,         spawn,          {.v = musicnext } },
 	{ 0,                            XF86XK_AudioPrev,         spawn,          {.v = musicprevious } },
-	{ MODKEY,                       XK_o,                     spawn,          {.v = dmenubar } },
-	{ MODKEY|ControlMask,           XK_c,                     spawn,          {.v = scratchpadcmd } },
-	{ MODKEY,                       XK_p,                     spawn,          {.v = passmancmd } },
-	{ MODKEY,                       XK_s,                     spawn,          {.v = clipsynccmd } },
-	{ MODKEY|ControlMask,           XK_s,                     spawn,          {.v = clipboardcmd } },
+	{ 0,                            XF86XK_TouchpadToggle,    spawn,          {.v = toggletouchpad } },
 	{ MODKEY,                       XK_b,                     togglebar,      {0} },
 	{ MODKEY,                       XK_j,                     focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,                     focusstack,     {.i = -1 } },
@@ -130,9 +130,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_apostrophe,            3)
 	TAGKEYS(                        XK_parenleft,             4)
 	TAGKEYS(                        XK_minus,                 5)
-	TAGKEYS(                        XK_egrave,                6)
-	TAGKEYS(                        XK_underscore,            7)
-	TAGKEYS(                        XK_ccedilla,              8)
+//	TAGKEYS(                        XK_egrave,                6)
+//	TAGKEYS(                        XK_underscore,            7)
+//	TAGKEYS(                        XK_ccedilla,              8)
 	{ MODKEY|ShiftMask,             XK_q,                     quit,           {0} },
 };
 
