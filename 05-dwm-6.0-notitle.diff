@@ -1,0 +1,13 @@
+--- dwm.c	2013-11-25 22:33:14.723494690 +0100
++++ dwm.c.new	2013-11-26 19:31:13.408664838 +0100
+@@ -757,8 +757,8 @@ drawbar(Monitor *m) {
+ 		dc.x = x;
+ 		if(m->sel) {
+ 			col = m == selmon ? dc.colors[1] : dc.colors[0];
+-			drawtext(m->sel->name, col, True);
+-			drawsquare(m->sel->isfixed, m->sel->isfloating, col);
++//			drawtext(m->sel->name, col, True);
++//			drawsquare(m->sel->isfixed, m->sel->isfloating, col);
+ 		}
+ 		else
+ 			drawtext(NULL, dc.colors[0], False);
