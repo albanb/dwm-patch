@@ -74,6 +74,7 @@ static const char *musicprevious[]  = { "/home/alban/bin/music.sh", "previous", 
 static const char *dmenubar[]  = { "/home/alban/bin/menu-dwm.bash", NULL };
 static const char *scratchpadcmd[] = { "st", "-t", "Scratchpad", "-g", "540x150+540+24", NULL };
 static const char *passmancmd[] = { "passman.bash", "fillbrowser", NULL };
+static const char *passmancmd[] = { "passman.bash", "get", NULL };
 static const char *clipsynccmd[] = { "xcmenu", "-spc", NULL };
 static const char *clipboardcmd[] = { "xcmenuctrl", NULL };
 
@@ -93,6 +94,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_r,                     spawn,          {.v = filemanager } },
 	{ MODKEY|ShiftMask,             XK_r,                     spawn,          {.v = filemanagerpi } },
 	{ MODKEY,                       XK_p,                     spawn,          {.v = passmancmd } },
+	{ MODKEY|ShiftMask,             XK_p,                     spawn,          {.v = passmancmdlp } },
 	{ MODKEY,                       XK_s,                     spawn,          {.v = clipsynccmd } },
 	{ MODKEY|ShiftMask,             XK_s,                     spawn,          {.v = lockscreen } },
 	{ MODKEY|ControlMask,           XK_s,                     spawn,          {.v = clipboardcmd } },
