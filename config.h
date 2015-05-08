@@ -6,11 +6,11 @@ static const char font[]            = "-*-stlarch-medium-r-*-*-10-*-*-*-*-*-*-*"
 #define NUMCOLORS 5
 static const char colors[NUMCOLORS][ColLast][9] = {
 	// border    foreground background
-	{ "#AEAEAE", "#E6E6E6", "#090C19" },	//normal
-	{ "#4D79FF", "#4957F3", "#090C19" },	//selected
-	{ "#DC2C2C", "#B32323", "#090C19" },	//urgent
-	{ "#E6CB29", "#FF9F3E", "#090C19" },	//error
-	{ "#5DCE33", "#1AAA13", "#090C19" },	//back to normal
+	{ "#FFFFFF", "#CECECE", "#050505" },	//normal
+	{ "#507CFF", "#3A57D7", "#050505" },	//selected
+	{ "#DC2F32", "#BE1919", "#050505" },	//urgent
+	{ "#DDB62B", "#B27D12", "#050505" },	//error
+	{ "#5DCE33", "#1AAA13", "#050505" },	//back to normal
 };
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
