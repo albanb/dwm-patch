@@ -72,8 +72,8 @@ static const char *musicnext[]  = { "/home/alban/bin/music.sh", "next", NULL };
 static const char *musicprevious[]  = { "/home/alban/bin/music.sh", "previous", NULL };
 static const char *dmenubar[]  = { "/home/alban/bin/power.bash", NULL };
 static const char *scratchpadcmd[] = { "st", "-t", "Scratchpad", "-g", "540x150+540+24", NULL };
-static const char *passmancmd[] = { "passman.bash", "fillbrowser", NULL };
-static const char *passmancmdlp[] = { "passman.bash", "get", NULL };
+static const char *passmancmd[] = { "passmgt.bash", "--type", NULL };
+static const char *passmancmdlp[] = { "passmgt.bash", NULL };
 static const char *clipsynccmd[] = { "xcmenu", "-spc", NULL };
 static const char *clipboardcmd[] = { "xcmenuctrl", NULL };
 
