@@ -1,0 +1,21 @@
+diff -up dwm-6.1_orig/dwm.c dwm-6.1_patch/dwm.c
+--- dwm-6.1_orig/dwm.c	2015-11-24 19:28:51.628742664 +0100
++++ dwm-6.1_patch/dwm.c	2015-11-24 19:31:50.282083107 +0100
+@@ -745,14 +745,9 @@ drawbar(Monitor *m)
+ 		x = m->ww;
+ 	if ((w = x - xx) > bh) {
+ 		x = xx;
+-		if (m->sel) {
+-			drw_setscheme(drw, &scheme[m == selmon ? 1 : 0]);
+-			drw_text(drw, x, 0, w, bh, m->sel->name, 1);
+-			drw_rect(drw, x, 0, w, bh, m->sel->isfixed, m->sel->isfloating);
+-		} else {
+-			drw_setscheme(drw, &scheme[0]);
+-			drw_rect(drw, x, 0, w, bh, 1, 0);
+-		}
++		drw_setscheme(drw, &scheme[0]);
++		drw_text(drw, x, 0, w, bh, "", 1);
++		drw_rect(drw, x, 0, w, bh, 1, 0);
+ 	}
+ 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
+ }

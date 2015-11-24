@@ -1,19 +1,20 @@
---- dwm.c
-+++ dwm.c
-@@ -227,6 +227,7 @@ static void sigchld(int unused);
+diff -up dwm-6.1_orig/dwm.c dwm-6.1_patch/dwm.c
+--- dwm-6.1_orig/dwm.c	2015-11-24 19:16:55.148714149 +0100
++++ dwm-6.1_patch/dwm.c	2015-11-24 19:26:55.135404695 +0100
+@@ -210,6 +210,7 @@ static void sigchld(int unused);
  static void spawn(const Arg *arg);
  static void tag(const Arg *arg);
  static void tagmon(const Arg *arg);
 +static void shiftview(const Arg *arg);
- static int textnw(const char *text, unsigned int len);
  static void tile(Monitor *);
  static void togglebar(const Arg *arg);
-@@ -1718,6 +1719,21 @@ tagmon(const Arg *arg) {
- 	sendmon(selmon->sel, dirtomon(arg->i));
+ static void togglefloating(const Arg *arg);
+@@ -1666,6 +1667,22 @@ tagmon(const Arg *arg)
  }
  
-+void
-+shiftview(const Arg *arg) {
+ void
++shiftview(const Arg *arg)
++{
 +	Arg shifted;
 +
 +	if(arg->i > 0) // left circular shift
@@ -27,6 +28,7 @@
 +	view(&shifted);
 +}
 +
- int
- textnw(const char *text, unsigned int len) {
- 	XRectangle r;
++void
+ tile(Monitor *m)
+ {
+ 	unsigned int i, n, h, mw, my, ty;
