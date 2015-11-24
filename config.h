@@ -2,7 +2,13 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const char font[]            = "-*-stlarch-medium-r-*-*-10-*-*-*-*-*-*-*" "," "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*";
+static const char *fonts[] = {
+	"terminux:pixelsize=12",
+       "stlarch:pixelsize=12"
+};
+static const char dmenufont[]       = "terminus:pixelsize=12";
+
+enum { ColBorder, ColFG, ColBG, ColLast };              /* color */
 #define NUMCOLORS 5
 static const char colors[NUMCOLORS][ColLast][9] = {
 	// border    foreground background
@@ -50,7 +56,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
 static const char *termuxcmd[]  = { "st", "-e", "/home/alban/bin/tmux-session.sh", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *launcher[]  = { "/home/alban/bin/launcher.bash", NULL };
