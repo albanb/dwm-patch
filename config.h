@@ -3,10 +3,10 @@
 
 /* appearance */
 static const char *fonts[] = {
-	"terminux:pixelsize=12",
-       "stlarch:pixelsize=12"
+        "terminux:pixelsize=10",
+        "stlarch:pixelsize=12"
 };
-static const char dmenufont[]       = "terminus:pixelsize=12";
+static const char dmenufont[]       = "terminus:pixelsize=10";
 
 enum { ColBorder, ColFG, ColBG, ColLast };              /* color */
 #define NUMCOLORS 5
