@@ -16,7 +16,7 @@ static const char colors[NUMCOLORS][ColLast][9] = {
 	{ "#507CFF", "#3A57D7", "#050505" },	//selected
 	{ "#DC2F32", "#BE1919", "#050505" },	//urgent
 	{ "#DDB62B", "#B27D12", "#050505" },	//error
-	{ "#5DCE33", "#1AAA13", "#050505" },	//back to normal
+	{ "#FFFFFF", "#050505", "#CECECE" },	//inverted
 };
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
