@@ -13,9 +13,8 @@ diff -up dwm-6.1_orig/dwm.c dwm-6.1_patch/dwm.c
 -			drw_setscheme(drw, &scheme[0]);
 -			drw_rect(drw, x, 0, w, bh, 1, 0);
 -		}
-+		drw_setscheme(drw, &scheme[4]);
++		drw_setscheme(drw, &scheme[1]);
 +		drw_text(drw, x, 0, w, bh, "", 1);
-+		drw_rect(drw, x, 0, w, bh, 1, 0);
  	}
  	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
  }
