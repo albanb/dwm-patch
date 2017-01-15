@@ -4,7 +4,7 @@
 /* appearance */
 static const char *fonts[] = {
         "terminux:pixelsize=10",
-        "stlarch:pixelsize=12"
+        "stlarch:pixelsize=10"
 };
 static const char dmenufont[]       = "terminus:pixelsize=10";
 
