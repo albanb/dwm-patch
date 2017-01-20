@@ -3,8 +3,8 @@
 
 /* appearance */
 static const char *fonts[] = {
-        "terminus:pixelsize=10",
-        "stlarch:pixelsize=10"
+        "Terminus:style=Regular",
+        "Stlarch:style=Regular"
 };
 static const char dmenufont[]       = "terminus:pixelsize=10";
 
