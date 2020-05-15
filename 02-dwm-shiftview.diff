@@ -1,21 +1,22 @@
-diff -up dwm-6.1_orig/dwm.c dwm-6.1_patch/dwm.c
---- dwm-6.1_orig/dwm.c	2015-11-24 19:16:55.148714149 +0100
-+++ dwm-6.1_patch/dwm.c	2015-11-24 19:26:55.135404695 +0100
-@@ -210,6 +210,7 @@ static void sigchld(int unused);
+Seulement dans dwm-6.2_: 01-dwm-statuscolor.diff
+diff -up dwm-6.2_/dwm.c dwm-6.2-patch/dwm.c
+--- dwm-6.2_/dwm.c	2020-05-15 23:41:26.126427625 +0200
++++ dwm-6.2-patch/dwm.c	2020-05-15 23:40:30.023097363 +0200
+@@ -205,6 +205,7 @@ static void setup(void);
+ static void seturgent(Client *c, int urg);
+ static void showhide(Client *c);
+ static void sigchld(int unused);
++static void shiftview(const Arg *arg);
  static void spawn(const Arg *arg);
  static void tag(const Arg *arg);
  static void tagmon(const Arg *arg);
-+static void shiftview(const Arg *arg);
- static void tile(Monitor *);
- static void togglebar(const Arg *arg);
- static void togglefloating(const Arg *arg);
-@@ -1666,6 +1667,22 @@ tagmon(const Arg *arg)
+@@ -1664,6 +1665,22 @@ sigchld(int unused)
  }
  
  void
 +shiftview(const Arg *arg)
 +{
-+	Arg shifted;
++    Arg shifted;
 +
 +	if(arg->i > 0) // left circular shift
 +		shifted.ui = (selmon->tagset[selmon->seltags] << arg->i)
@@ -29,6 +30,6 @@ diff -up dwm-6.1_orig/dwm.c dwm-6.1_patch/dwm.c
 +}
 +
 +void
- tile(Monitor *m)
+ spawn(const Arg *arg)
  {
- 	unsigned int i, n, h, mw, my, ty;
+ 	if (arg->v == dmenucmd)
