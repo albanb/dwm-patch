@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "FreeSans:pixelsize=12",
-                                        "Misc Siji:pixelsize=12"};
+                                        "Siji:pixelsize=12"};
 static const char dmenufont[]       = "FreeSans:pixelsize=12";
 static const char col_gray1[]       = "#CECECE";
 static const char col_dark[]       = "#050505";
