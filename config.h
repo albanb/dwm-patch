@@ -6,9 +6,9 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "FreeSans:pixelsize=12",
-                                        "Siji:pixelsize=12"};
-static const char dmenufont[]       = "FreeSans:pixelsize=12";
+static const char *fonts[]          = { "xos4 Terminus:pixelsize=10",
+                                        "Siji:pixelsize=10"};
+static const char dmenufont[]       = "xos4 Terminus:pixelsize=10";
 static const char col_gray1[]       = "#CECECE";
 static const char col_dark[]       = "#050505";
 static const char col_blue1[]       = "#507CFF";
